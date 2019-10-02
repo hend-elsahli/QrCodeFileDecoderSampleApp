@@ -7,7 +7,7 @@ import {
   Button,
   ActivityIndicator,
 } from 'react-native';
-import RNFetchBlob from 'react-native-fetch-blob';
+import RNFetchBlob from 'rn-fetch-blob';
 import QrCodeReader from 'qrcode-reader';
 
 const QR_CODE_FILE_URI = 'https://i.imgur.com/FYS11mW.png';
