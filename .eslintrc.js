@@ -1,4 +1,7 @@
 module.exports = {
-  root: true,
-  extends: '@react-native-community',
+  extends: 'wesbos',
+  rules: {
+    'react/prop-types': 0,
+    'react/display-name': 0
+  }
 };
