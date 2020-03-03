@@ -1,6 +1,7 @@
 /* eslint-disable */
 var stream = require("stream");
 var zlib = require("react-zlib-js");
+import { Buffer } from "buffer";
 var HEADER = new Buffer("89504e470d0a1a0a", "hex");
 
 function ImageData(width, height, channels, data, trailer) {
@@ -355,7 +356,7 @@ exports.parseStream = function(stream, callback) {
             i = len;
           } else {
             /* Otherwise, write the last bit of the data to the inflator, and
-           * finish processing the chunk. */
+             * finish processing the chunk. */
             /* FIXME: Do I need to be smart and check the return value? */
             inflate.write(data.slice(i, i + chunkLength - off));
             i += chunkLength - off;

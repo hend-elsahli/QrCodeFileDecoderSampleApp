@@ -4,13 +4,16 @@ import {
   View,
   Text,
   Image,
+  Alert,
   Button,
   ActivityIndicator,
+  Linking,
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import QrCodeReader from 'qrcode-reader';
+import { Buffer } from 'buffer';
 
-const QR_CODE_FILE_URI = 'https://i.imgur.com/FYS11mW.png';
+const QR_CODE_FILE_URI = 'https://i.imgur.com/AQWi2OX.png';
 
 /*---------------------------------
             STYLES
@@ -108,8 +111,22 @@ class FileDecoder extends React.Component {
           });
         }
       };
+
       qr.decode({ width, height }, imageData.data);
     });
+  };
+
+  openLink = link => {
+    Linking.canOpenURL(link)
+      .then(supported => {
+        if (supported) Linking.openURL(link);
+        else {
+          Alert.alert('Oops!', 'Can not open link!');
+        }
+      })
+      .catch(() => {
+        Alert.alert('Oops!', 'Can not open link!');
+      });
   };
 
   render() {
@@ -157,7 +174,11 @@ class FileDecoder extends React.Component {
             <View style={{ marginBottom: 4 }}>
               <Text style={styles.title}>Decoding Result</Text>
             </View>
-            <Text>{decodingResult}</Text>
+            <Button
+              title={decodingResult}
+              onPress={() => this.openLink(decodingResult)}
+            />
+
             <Text style={styles.error}>{decodingError}</Text>
           </View>
         ) : null}
