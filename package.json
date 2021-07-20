@@ -11,7 +11,7 @@
     "buffer": "^5.4.3",
     "qrcode-reader": "^1.0.4",
     "react": "16.8.6",
-    "react-native": "0.60.4",
+    "react-native": "0.62.3",
     "react-zlib-js": "1.0.4",
     "rn-fetch-blob": "^0.10.16",
     "stream": "0.0.2"
